@@ -1,12 +1,12 @@
 export type TimeseriesDataModel = {
   base: string;
   end_date: string;
-  motd: {
+  motd?: {
     msg: string;
     url: string;
   };
-  msg: string;
-  url: string;
+  msg?: string;
+  url?: string;
   rates: {
     [key: string]: {
       [key: string]: number;

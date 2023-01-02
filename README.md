@@ -44,3 +44,9 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+## Developer Explanations
+
+Logout button doesnt work yet.
+
+For running the project, add .env file with REACT_APP_ENDPOINT=https://api.exchangerate.host/ variable to it and then start the project.

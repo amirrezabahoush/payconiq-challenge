@@ -41,7 +41,7 @@ const ExchangeHistory = React.memo<ExchangeHistoryProps>(({ from, to }) => {
       const startDate = getXDaysAgo(duration)?.toISOString().split("T")[0];
       const endDate = new Date().toISOString().split("T")[0];
       const response = await getExchangeHistory({ startDate, endDate });
-      setData(response.data);
+      setData(response?.data);
     } catch (e) {
       console.log(e);
     } finally {
@@ -109,6 +109,7 @@ const ExchangeHistory = React.memo<ExchangeHistoryProps>(({ from, to }) => {
         <FormControl>
           <RadioGroup
             row
+            data-testid="mode"
             aria-labelledby="demo-row-radio-buttons-group-label"
             name="row-radio-buttons-group"
             onChange={(e) => setMode(e.target.value)}
@@ -128,6 +129,7 @@ const ExchangeHistory = React.memo<ExchangeHistoryProps>(({ from, to }) => {
               label="Table"
             />
             <FormControlLabel
+              data-testid="chart"
               value="chart"
               control={
                 <Radio
@@ -167,7 +169,7 @@ const ExchangeHistory = React.memo<ExchangeHistoryProps>(({ from, to }) => {
                           {date}
                         </TableCell>
                         <TableCell align="right">
-                          {values[`${to}`] / values[`${from}`]}
+                          {values[`${from}`] ? values[`${to}`] / values[`${from}`] : 0}
                         </TableCell>
                       </TableRow>
                     ))}
