@@ -5,26 +5,19 @@ import { getConvertResult, getLatest } from "services";
 import Loading from "components/Loading";
 import {
   FormControl,
-  MenuItem,
-  Select,
   TextField,
   Typography,
   InputLabel,
   NativeSelect,
 } from "@mui/material";
 import CompareArrowsIcon from "@mui/icons-material/CompareArrows";
-
 import Button from "components/Button";
 import { ConvertResultDataModel } from "models/ConvertResult.model";
 import { handleCacheConvertedData } from "utils";
 import { StyledConvertResult, StyledConvertButton } from "./Converter.styled";
+import { ConverterProps } from "./Converter.props";
 
-const Converter = React.memo<{
-  from: string;
-  to: string;
-  setFrom: (key: string) => void;
-  setTo: (key: string) => void;
-}>(({ from, to, setFrom, setTo }) => {
+const Converter = React.memo<ConverterProps>(({ from, to, setFrom, setTo }) => {
   const [amount, setAmount] = useState(0);
   const [data, setData] = useState<LatestDataModel>();
   const [result, setResult] = useState<ConvertResultDataModel>();
@@ -135,32 +128,32 @@ const Converter = React.memo<{
         <Button onClick={handleConvertClick}>CONVERT</Button>
       </Grid>
       {(result?.result || 0) > 0 && (
-        <Grid item xs={12}>
-          <StyledConvertResult>
-            {(result?.result || 0) > 0 && (
-              <div className="equal-converter">
-                <span className="from-equal">
-                  {amount} {from}
-                </span>
-                =
-                <span className="font-weight-bold to-equal">
-                  {result?.result} {to}
-                </span>
-              </div>
-            )}
+        <>
+          <Grid item xs={12}>
+            <StyledConvertResult>
+              {(result?.result || 0) > 0 && (
+                <div className="equal-converter">
+                  {amount} {from} ={" "}
+                  <span className="font-weight-bold to-equal">
+                    {result?.result} {to}
+                  </span>
+                </div>
+              )}
 
-            {result?.info?.rate && (
-              <div>
-                <p className="mb-1">
-                  1 {from} = {result?.info?.rate} {to}
-                </p>
-                <p>
-                  1 {to} = {1 / result?.info?.rate} {from}
-                </p>
-              </div>
-            )}
-          </StyledConvertResult>
-        </Grid>
+              {result?.info?.rate && (
+                <div>
+                  <p className="mb-1">
+                    1 {from} = {result?.info?.rate} {to}
+                  </p>
+                  <p>
+                    1 {to} = {1 / result?.info?.rate} {from}
+                  </p>
+                </div>
+              )}
+            </StyledConvertResult>
+          </Grid>
+          <hr />
+        </>
       )}
     </>
   );

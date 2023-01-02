@@ -4,7 +4,7 @@ import CircularProgress from '@mui/material/CircularProgress';
 
 const Loading = () => {
   return (
-    <LoadingWrapper data-testid='loading'>
+    <LoadingWrapper>
       <CircularProgress />
     </LoadingWrapper>
   );

@@ -7,7 +7,7 @@ export const StyledConvertButton = styled.button`
   height: 2.5rem;
   text-align: center;
   cursor: pointer;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  box-shadow: ${(props) => props.theme?.card?.boxShadow};
   svg {
     color: ${(props) => props.theme?.colors?.primary};
   }
@@ -18,9 +18,10 @@ export const StyledConvertResult = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  padding-bottom: 16px;
   color: ${(props) => props.theme?.colors?.text?.default};
   .equal-converter {
-    font-size: 3rem;
+    font-size: ${(props) => props.theme?.fontSize?.pageTitle};;
     margin: 2rem 0;
     .to-equal {
       color: ${(props) => props.theme?.colors?.accent};

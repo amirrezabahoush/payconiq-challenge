@@ -1,17 +1,11 @@
 import React, { ErrorInfo } from "react";
+import { ErrorBoundartProps } from "./ErrorBoundary.props";
 
-interface Props {
-  name: string;
-  unmountChildrenWhenError?: boolean;
-  children: React.ReactElement;
-}
-
-interface State {
-  hasError: boolean;
-}
-
-export default class ErrorBoundary extends React.Component<Props, State> {
-  constructor(props: Props) {
+export default class ErrorBoundary extends React.Component<
+  ErrorBoundartProps,
+  { hasError: boolean }
+> {
+  constructor(props: ErrorBoundartProps) {
     super(props);
     this.state = { hasError: false };
   }
@@ -36,10 +30,6 @@ export default class ErrorBoundary extends React.Component<Props, State> {
 
   render() {
     if (!this.state.hasError) return this.props.children;
-    return (
-      <span onClick={() => this.setState({ hasError: false })}>
-        -
-      </span>
-    );
+    return <span onClick={() => this.setState({ hasError: false })}>-</span>;
   }
 }

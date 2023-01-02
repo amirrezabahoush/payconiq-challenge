@@ -17,12 +17,10 @@ const LineChart: React.FC<LineChartProps> = React.memo((props) => {
     chart: {
       type: 'line',
       stacked: false,
-      height: 600,
+      height: 700,
       width:"100%",
       zoom: {
-        type: 'x',
         enabled: false,
-        autoScaleYaxis: true,
       },
       toolbar: {
         show: false,
@@ -40,7 +38,6 @@ const LineChart: React.FC<LineChartProps> = React.memo((props) => {
       type: 'solid',
     },
     yaxis: {
-      tickAmount: 2,
       labels: {
         style: {
           colors: '#b4b1c2',

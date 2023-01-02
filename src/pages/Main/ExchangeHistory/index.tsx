@@ -21,6 +21,7 @@ import {
 import { TimeseriesDataModel } from "models/Timeseries.model";
 import { getXDaysAgo } from "utils";
 import LineChart from "components/LineChart";
+import { StyledTableHead } from "./../Main.styled";
 
 const ExchangeHistory = React.memo<{ from: string; to: string }>(
   ({ from, to }) => {
@@ -126,12 +127,28 @@ const ExchangeHistory = React.memo<{ from: string; to: string }>(
             >
               <FormControlLabel
                 value="table"
-                control={<Radio />}
+                control={
+                  <Radio
+                    sx={{
+                      "&.Mui-checked": {
+                        color: "#009688",
+                      },
+                    }}
+                  />
+                }
                 label="Table"
               />
               <FormControlLabel
                 value="chart"
-                control={<Radio />}
+                control={
+                  <Radio
+                    sx={{
+                      "&.Mui-checked": {
+                        color: "#009688",
+                      },
+                    }}
+                  />
+                }
                 label="Chart"
               />
             </RadioGroup>
@@ -143,12 +160,12 @@ const ExchangeHistory = React.memo<{ from: string; to: string }>(
               {mode === "table" ? (
                 <TableContainer component={Paper}>
                   <Table aria-label="exchange history table">
-                    <TableHead>
+                    <StyledTableHead>
                       <TableRow>
                         <TableCell>Date</TableCell>
                         <TableCell align="right">Exchange Rate</TableCell>
                       </TableRow>
-                    </TableHead>
+                    </StyledTableHead>
                     <TableBody>
                       {Object.entries(data?.rates || {}).map(
                         ([date, values]) => (
@@ -171,18 +188,21 @@ const ExchangeHistory = React.memo<{ from: string; to: string }>(
                   </Table>
                 </TableContainer>
               ) : (
-                <LineChart series={chart?.exchangeRates} categories={chart?.dates} />
+                <LineChart
+                  series={chart?.exchangeRates}
+                  categories={chart?.dates}
+                />
               )}
             </Grid>
             <Grid item xs={6}>
               <TableContainer component={Paper}>
                 <Table aria-label="statistics table">
-                  <TableHead>
+                  <StyledTableHead>
                     <TableRow>
                       <TableCell>Statistics</TableCell>
                       <TableCell></TableCell>
                     </TableRow>
-                  </TableHead>
+                  </StyledTableHead>
                   <TableBody>
                     <TableRow
                       sx={{

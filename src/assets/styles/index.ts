@@ -14,17 +14,7 @@ const theme: DefaultTheme = {
     pageTitle: '48px',
     sectionTitle: '24px',
     body: '16px'
-  },
-  card: {
-    boxShadow: '0 0 0.5px 0.5px rgba(213, 215, 225, 0.5)',
-    borderRadius: '5px',
-    backgroundColor: '#fff',
-  },
-  border: {
-    radius: '3px'
-  },
-  antIcon: {
-    color: '#CBD4E1'
   }
 };
+
 export default theme;

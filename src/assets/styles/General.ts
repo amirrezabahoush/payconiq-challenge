@@ -16,6 +16,7 @@ export const cssResets = css`
         padding: 0;
         outline: none;
         box-sizing: border-box;
+        font-family: "Roboto", "Helvetica", "Arial", sans-serif;
       }
     }
   }
@@ -59,47 +60,12 @@ export const cssResets = css`
 `;
 
 export const globals = css`
-  .p-1 {
-    padding: 8px;
-  }
-
-  .pt-1 {
-    padding-top: 8px;
-  }
-
-  .pb-1 {
-    padding-bottom: 8px;
-  }
-
-  .py-1 {
-    padding-top: 8px;
-    padding-bottom: 8px;
-  }
   .p-2 {
     padding: 16px;
-  }
-  .m-1 {
-    margin: 4px;
-  }
-  .my-1 {
-    margin-bottom: 8px !important;
-    margin-top: 8px !important;
-  }
-
-  .mt-1 {
-    margin-top: 8px;
   }
 
   .mb-1 {
     margin-bottom: 8px;
-  }
-
-  .w-25 {
-    width: 25%;
-  }
-
-  .d-block {
-    display: block;
   }
 
   .d-flex {
@@ -110,15 +76,25 @@ export const globals = css`
     justify-content: center !important;
   }
 
-  .align-items-center {
-    align-items: center !important;
+  .justify-content-between {
+    justify-content: space-between !important;
   }
 
-  .flex-direction-column {
-    flex-direction: column !important;
+  .align-items-center {
+    align-items: center !important;
   }
 
   .font-weight-bold {
     font-weight: 700 !important;
   }
+
+  hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #d5d5d5;
+    width: 100%;
+  }
+  
 `;
+

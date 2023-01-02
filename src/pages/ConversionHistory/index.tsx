@@ -14,6 +14,8 @@ import {
 } from "@mui/material";
 import Empty from "components/Empty";
 import { Delete, RemoveRedEye } from "@mui/icons-material";
+import StyledActionIcon from "./ConversionHistory.styled";
+import { ConvertionHistoryDataModel } from "models/CacheHistory.model";
 
 const ConversionHistory = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -29,7 +31,7 @@ const ConversionHistory = () => {
       <Grid container spacing={2}>
         <Grid item xs={12} spacing={3}>
           <Typography variant="h5" className="font-weight-bold">
-            Exchange History
+            Conversion history
           </Typography>
         </Grid>
         {cachedHistory ? (
@@ -50,12 +52,7 @@ const ConversionHistory = () => {
                       to,
                       amount,
                       date,
-                    }: {
-                      from: string;
-                      to: string;
-                      amount: number;
-                      date: string;
-                    }) => (
+                    }: ConvertionHistoryDataModel) => (
                       <TableRow
                         key={`${from}-${to}-${amount}`}
                         sx={{
@@ -69,11 +66,16 @@ const ConversionHistory = () => {
                           Converted an amount of {amount} from {from} to {to}
                         </TableCell>
                         <TableCell component="th" scope="row">
-                          <span style={{display: 'flex', alignItems: 'center'}}><RemoveRedEye className="m-1"/>View</span>
-                          <span style={{display: 'flex', alignItems: 'center'}}>
-                            <Delete className="m-1" />
-                            Delete from history
-                          </span>
+                          <div className="d-flex align-items-center justify-content-between">
+                            <StyledActionIcon className="view">
+                              <RemoveRedEye />
+                              View
+                            </StyledActionIcon>
+                            <StyledActionIcon className="delete">
+                              <Delete />
+                              Delete from history
+                            </StyledActionIcon>
+                          </div>
                         </TableCell>
                       </TableRow>
                     )

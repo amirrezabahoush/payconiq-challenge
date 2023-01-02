@@ -3,18 +3,36 @@ import { LatestDataModel } from "models/Latest.model";
 import { TimeseriesDataModel } from "models/Timeseries.model";
 import { ConvertResultDataModel } from "../models/ConvertResult.model";
 
+const api = axios.create({
+  baseURL: process.env.REACT_APP_ENDPOINT,
+});
+
 export const getLatest = () => {
-  return axios.get<LatestDataModel>("https://api.exchangerate.host/latest");
+  return api.get<LatestDataModel>("latest");
 };
 
-export const getConvertResult = ({ from, to, amount }: { [key: string]: string | number }) => {
-  return axios.get<ConvertResultDataModel>(
-    `https://api.exchangerate.host/convert?from=${from}&to=${to}&amount=${amount}`
+type ConvertResultProps = {
+  from: string;
+  to: string;
+  amount: number;
+};
+
+export const getConvertResult = ({ from, to, amount }: ConvertResultProps) => {
+  return api.get<ConvertResultDataModel>(
+    `convert?from=${from}&to=${to}&amount=${amount}`
   );
 };
 
-export const getExchangeHistory = ({ startDate, endDate }: { [key: string]: string }) => {
-  return axios.get<TimeseriesDataModel>(
-    `https://api.exchangerate.host/timeseries?start_date=${startDate}&end_date=${endDate}`
+type ExchangeHistoryProps = {
+  startDate: string;
+  endDate: string;
+};
+
+export const getExchangeHistory = ({
+  startDate,
+  endDate,
+}: ExchangeHistoryProps) => {
+  return api.get<TimeseriesDataModel>(
+    `timeseries?start_date=${startDate}&end_date=${endDate}`
   );
 };

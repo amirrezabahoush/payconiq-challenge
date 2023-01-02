@@ -10,10 +10,12 @@ import {
   MenuItem,
 } from "@mui/material";
 import { Link } from "react-router-dom";
+import StyledAppBar from "./Header.styled";
 
 const pages = [
   { title: "CURRENCY CONVERTER", pathname: "/" },
   { title: "VIEW CONVERSION HISTORY", pathname: "/conversion-history" },
+  { title: "Logout", pathname: "/" },
 ];
 
 const Header = () => {
@@ -26,7 +28,7 @@ const Header = () => {
   };
 
   return (
-    <AppBar position="static">
+    <StyledAppBar position="static" color="default">
       <Container>
         <Toolbar disableGutters={true}>
           <Typography
@@ -103,7 +105,7 @@ const Header = () => {
           </Box>
         </Toolbar>
       </Container>
-    </AppBar>
+    </StyledAppBar>
   );
 };
 export default Header;
