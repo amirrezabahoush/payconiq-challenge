@@ -1,6 +1,5 @@
 import React from "react";
 import {
-  AppBar,
   Box,
   Toolbar,
   Typography,
@@ -9,19 +8,21 @@ import {
   Button,
   MenuItem,
 } from "@mui/material";
-import { Link } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import StyledAppBar from "./Header.styled";
+import ActiveMenuLink from "components/ActiveMenu/ActiveMenu.styled";
 
 const pages = [
   { title: "CURRENCY CONVERTER", pathname: "/" },
   { title: "VIEW CONVERSION HISTORY", pathname: "/conversion-history" },
-  { title: "Logout", pathname: "/" },
 ];
 
 const Header = () => {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
     null
   );
+
+  const { pathname } = useLocation();
 
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
@@ -39,7 +40,7 @@ const Header = () => {
             sx={{
               mr: 2,
               display: { xs: "none", md: "flex" },
-              color: "inherit",
+              color: "#404040",
               textDecoration: "none",
             }}
           >
@@ -66,10 +67,13 @@ const Header = () => {
               }}
             >
               {pages.map((page) => (
-                <MenuItem key={page.title} onClick={handleCloseNavMenu}>
-                  <Link to={page.pathname}>
+                <MenuItem key={page.title}>
+                  <ActiveMenuLink
+                    className={pathname === page.pathname ? "active" : ""}
+                    to={page.pathname}
+                  >
                     <Typography textAlign="center">{page.title}</Typography>
-                  </Link>
+                  </ActiveMenuLink>
                 </MenuItem>
               ))}
             </Menu>
@@ -84,7 +88,7 @@ const Header = () => {
               mr: 2,
               display: { xs: "flex", md: "none" },
               flexGrow: 1,
-              color: "inherit",
+              color: "#404040",
               textDecoration: "none",
             }}
           >
@@ -93,16 +97,31 @@ const Header = () => {
 
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {pages.map((page) => (
-              <Link to={page.pathname} key={page.title}>
-                <Button
-                  onClick={handleCloseNavMenu}
-                  sx={{ my: 2, color: "white", display: "block" }}
-                >
+              <ActiveMenuLink
+                className={pathname === page.pathname ? "active" : ""}
+                to={page.pathname}
+                key={page.title}
+              >
+                <Button sx={{ my: 2 }}>
                   {page.title}
                 </Button>
-              </Link>
+              </ActiveMenuLink>
             ))}
           </Box>
+          <Typography
+            variant="h6"
+            noWrap={true}
+            component="a"
+            href="/"
+            sx={{
+              fontSize: "16px",
+              color: "#009688",
+              textTransform: "uppercase",
+              fontWeight: "bold",
+            }}
+          >
+            Logout
+          </Typography>
         </Toolbar>
       </Container>
     </StyledAppBar>

@@ -5,7 +5,7 @@ import Loading from "../../components/Loading";
 import Converter from "./Converter";
 import ExchangeHistory from "./ExchangeHistory";
 
-const Overview = () => {
+const Main = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [from, setFrom] = useState("");
   const [to, setTo] = useState("");
@@ -18,10 +18,10 @@ const Overview = () => {
     <StyledWrapper>
       <Grid container spacing={2}>
         <Converter from={from} to={to} setFrom={setFrom} setTo={setTo} />
-        {from && to && <ExchangeHistory from={from} to={to} />}
+        <ExchangeHistory from={from} to={to} />
       </Grid>
     </StyledWrapper>
   );
 };
 
-export default Overview;
+export default Main;

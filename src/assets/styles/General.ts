@@ -95,6 +95,15 @@ export const globals = css`
     border-top: 1px solid #d5d5d5;
     width: 100%;
   }
-  
+  .table-row{
+    .action-wrapper {
+      opacity: 0;
+      transition: opacity 0.3s linear;
+    }
+    &:hover {
+      .action-wrapper {
+        opacity: 1;
+      }
+    }
+  }
 `;
-

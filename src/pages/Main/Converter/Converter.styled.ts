@@ -7,7 +7,7 @@ export const StyledConvertButton = styled.button`
   height: 2.5rem;
   text-align: center;
   cursor: pointer;
-  box-shadow: ${(props) => props.theme?.card?.boxShadow};
+  box-shadow: 0 0 0.5px 0.5px rgba(213, 215, 225, 0.5);
   svg {
     color: ${(props) => props.theme?.colors?.primary};
   }
